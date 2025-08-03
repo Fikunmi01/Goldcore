@@ -3,7 +3,10 @@ import { Button } from "../ui/button"
 import { Card, CardHeader, CardTitle } from "../ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
-import { Select, SelectContent,  SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { JobSearch } from "./job-search"
+import { Review } from "../review"
+import { Footer } from "../footer"
 
 export const Hero = () => {
     const form = useForm({
@@ -121,6 +124,10 @@ export const Hero = () => {
                     </div>
                 </div>
             </div>
+                            <JobSearch />
+                <Review />
+                <Footer />
+
         </div>
     )
 }
