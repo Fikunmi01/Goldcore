@@ -124,9 +124,9 @@ export const Hero = () => {
                     </div>
                 </div>
             </div>
-                            <JobSearch />
-                <Review />
-                <Footer />
+            <JobSearch />
+            <Review />
+            <Footer />
 
         </div>
     )
