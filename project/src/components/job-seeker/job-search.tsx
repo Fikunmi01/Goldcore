@@ -2,8 +2,15 @@ import { Card, CardHeader, CardTitle } from "../ui/card"
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "../ui/pagination"
 import { useState } from "react"
 
+// Define types for better TypeScript support
+interface Job {
+    id: string;
+    title: string;
+    location: string;
+}
+
 export const JobSearch = () => {
-    const jobs = [
+    const jobs: Job[] = [
         {
             id: "12611811",
             title: "Adult Financial Emergency Assistant Specialist",
@@ -66,7 +73,7 @@ export const JobSearch = () => {
         }
     ]
 
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState<number>(1)
     const itemsPerPage = 6 // 2 rows × 3 columns
     const totalPages = Math.ceil(jobs.length / itemsPerPage)
 
@@ -75,8 +82,15 @@ export const JobSearch = () => {
     const endIndex = startIndex + itemsPerPage
     const currentJobs = jobs.slice(startIndex, endIndex)
 
-    const handlePageChange = (page) => {
+    // Fixed: Added type annotation for the page parameter
+    const handlePageChange = (page: number) => {
         setCurrentPage(page)
+    }
+
+    // Handler for apply button
+    const handleApply = (jobId: string) => {
+        console.log(`Applying for job ${jobId}`)
+        // Add your apply logic here
     }
 
     return (
@@ -98,7 +112,10 @@ export const JobSearch = () => {
                                 <p>Location:</p>
                                 <p>{job.location}</p>
                             </span>
-                            <button className="bg-[#059669] hover:bg-[#059669]/80 text-white px-3 py-1 rounded-full cursor-pointer">
+                            <button 
+                                className="bg-[#059669] hover:bg-[#059669]/80 text-white px-3 py-1 rounded-full cursor-pointer transition-colors"
+                                onClick={() => handleApply(job.id)}
+                            >
                                 Apply Now
                             </button>
                         </div>
