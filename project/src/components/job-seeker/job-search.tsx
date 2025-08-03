@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle } from "../ui/card"
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "../ui/pagination"
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "../ui/pagination"
 import { useState } from "react"
 
 export const JobSearch = () => {

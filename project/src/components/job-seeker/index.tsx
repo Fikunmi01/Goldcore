@@ -3,10 +3,7 @@ import { Button } from "../ui/button"
 import { Card, CardHeader, CardTitle } from "../ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select"
-import { JobSearch } from "./job-search"
-import { Review } from "../review"
-import { Footer } from "../footer"
+import { Select, SelectContent,  SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 
 export const Hero = () => {
     const form = useForm({
@@ -17,7 +14,7 @@ export const Hero = () => {
         }
     })
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: { jobtitle: string; location: string; jobcategory: string }) => {
         console.log(data)
     }
 
@@ -37,7 +34,7 @@ export const Hero = () => {
                         <p className="text-left font-outfit text-xl">At GoldCore, we specialize in connecting skilled professionals with remote customer service and call center roles that fit their talents and career goals. Whether you're seeking a work-from-home customer service job or an in-office call center position, we're here to match you with opportunities where you can grow, succeed, and make an impact.
                             Start your journey with GoldCore and explore our wide range of remote and local job openings today.
                         </p>
-                        <Button className="bg-[#059669] hover:bg-[#059669]/80 cursor-pointer w-fit font-lato font-medium text-base">Schedule a call today</Button>
+                        <Button className="bg-[#059669] w-fit font-lato font-medium text-base">Schedule a call today</Button>
                     </span>
 
                     <div className="w-1/3">
@@ -115,8 +112,8 @@ export const Hero = () => {
                                         )}
                                     />
 
-                                    <Button type="submit" className="w-full bg-[#059669] hover:bg-[#059669]/80 cursor-pointer">
-                                        Search Jobs
+                                    <Button type="submit" className="w-full bg-[#2563EB] hover:bg-[#1D4ED8]">
+                                        Find Jobs
                                     </Button>
                                 </form>
                             </Form>
@@ -124,10 +121,6 @@ export const Hero = () => {
                     </div>
                 </div>
             </div>
-
-            <JobSearch/>
-            <Review/>
-            <Footer/>
         </div>
     )
 }

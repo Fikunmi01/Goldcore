@@ -31,10 +31,10 @@ export function NavigationMenuComponent() {
 
     return (
         <div className={`
-            font-redRose text-white hover:text-white flex items-center justify-between z-50 
+            font-redRose text-white flex items-center justify-between z-50 
             fixed top-0 left-0 right-0  px-8 transition-all duration-300 ease-in-out
             ${isScrolled
-                ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-[#FFD700]/50'
+                ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-[#FFD700]/50 hover:text-white'
                 : 'bg-transparent py-4 relative z-20'
             }
         `}>
@@ -56,8 +56,11 @@ export function NavigationMenuComponent() {
                 <NavigationMenuList className="flex gap-x-2">
                     <NavigationMenuItem>
                         <NavigationMenuTrigger
-                            className={`transition-colors duration-300 ${isScrolled ? 'text-gray-900 hover:text-gray-700' : 'text-white hover:text-gray-200'
-                                }`}
+                            className={`transition-colors duration-300 ${
+                                isScrolled 
+                                    ? 'text-gray-900 hover:text-gray-700' 
+                                    : 'text-white'
+                            }`}
                         >
                             Staffing Solutions
                         </NavigationMenuTrigger>
@@ -73,8 +76,11 @@ export function NavigationMenuComponent() {
                     <NavigationMenuItem>
                         <NavigationMenuLink
                             asChild
-                            className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${isScrolled ? 'text-gray-900 hover:text-gray-700' : 'text-white hover:text-gray-200'
-                                }`}
+                            className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${
+                                isScrolled 
+                                    ? 'text-gray-900 hover:text-gray-700' 
+                                    : 'text-white'
+                            }`}
                         >
                             <Link to="/job-seeker">For Job Seekers</Link>
                         </NavigationMenuLink>
@@ -83,8 +89,11 @@ export function NavigationMenuComponent() {
                     <NavigationMenuItem>
                         <NavigationMenuLink
                             asChild
-                            className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${isScrolled ? 'text-gray-900 hover:text-gray-700' : 'text-white hover:text-gray-200'
-                                }`}
+                            className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${
+                                isScrolled 
+                                    ? 'text-gray-900 hover:text-gray-700' 
+                                    : 'text-white'
+                            }`}
                         >
                             <Link to="/docs">About Us</Link>
                         </NavigationMenuLink>
@@ -92,8 +101,11 @@ export function NavigationMenuComponent() {
 
                     <NavigationMenuItem>
                         <NavigationMenuTrigger
-                            className={`transition-colors duration-300 ${isScrolled ? 'text-gray-900 hover:text-gray-700' : 'text-white hover:text-gray-200'
-                                }`}
+                            className={`transition-colors duration-300 ${
+                                isScrolled 
+                                    ? 'text-gray-900 hover:text-gray-700' 
+                                    : 'text-white'
+                            }`}
                         >
                             Insights
                         </NavigationMenuTrigger>
@@ -123,21 +135,28 @@ export function NavigationMenuComponent() {
                     <NavigationMenuItem>
                         <NavigationMenuLink
                             asChild
-                            className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${isScrolled ? 'text-gray-900 hover:text-gray-700' : 'text-white hover:text-gray-200'
-                                }`}
+                            className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${
+                                isScrolled 
+                                    ? 'text-gray-900 hover:text-gray-700' 
+                                    : 'text-white'
+                            }`}
                         >
                             <Link to="/docs">Contact Us</Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
 
                     <NavigationMenuItem>
-                        <Button className="bg-transparent text-[#059669] font-bold cursor-pointer hover:bg-transparent border-none transition-colors duration-300">
+                        <Button className={`bg-transparent text-[#059669] font-bold cursor-pointer border-none transition-colors duration-300 ${
+                            isScrolled ? 'hover:bg-transparent' : ''
+                        }`}>
                             Search All Jobs
                         </Button>
                     </NavigationMenuItem>
 
                     <NavigationMenuItem>
-                        <Button className="bg-[#2563EB] cursor-pointer hover:bg-[#1D4ED8] transition-colors duration-300">
+                        <Button className={`bg-[#2563EB] cursor-pointer transition-colors duration-300 ${
+                            isScrolled ? 'hover:bg-[#1D4ED8]' : ''
+                        }`}>
                             Schedule a Call Now
                         </Button>
                     </NavigationMenuItem>
