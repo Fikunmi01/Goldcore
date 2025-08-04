@@ -24,30 +24,34 @@ export const Hero = () => {
         }
     ]
     return (
-        <div className="bg-[#F8FAFC]  absolute top-0 opacity-80 overflow-hidden">
+        <div className="bg-[#F8FAFC]  lg:w-full absolute top-0 opacity-80 overflow-hidden">
 
-            <img src="/assets/hero-bg.jpg" alt="" />
-            <div className="absolute top-48 px-8 text-white">
-                <p className="font-outfit text-base font-medium">Your call Center's Success Starts with expert Staffing Solution</p>
-                <h1 className="font-redRose text-7xl w-2/5 font-bold">Call Center Staffing Made Simple</h1>
-                <div className="flex-col flex gap-4">
-                    <span className="flex items-center gap-5 w-96">
-                        <p className="w-96 text-lg font-outfit font-medium">call center staffing </p>
-                        <p className="w-96 text-lg font-outfit font-medium">job seekers  </p>
+            <img
+                src="/assets/hero-bg.jpg"
+                className="w-[100vh] h-screen object-cover lg:h-full lg:w-full"
+                alt=""
+            />
+            <div className=" absolute top-48 px-4 lg:px-8 text-white">
+                <p className="font-outfit text-center text-xs lg:text-base font-medium">Your call Center's Success Starts with expert Staffing Solution</p>
+                <h1 className="font-redRose  text-center lg:text-left text-4xl lg:text-7xl lg:w-2/5 font-bold">Call Center Staffing Made Simple</h1>
+                <div className="flex-col justify-center items-center lg:items-start lg:left-0 relative lg:justify-start flex gap-4">
+                    <span className="flex items-center gap-3 lg:gap-5 lg:w-96">
+                        <p className="lg:w-96 text-lg font-outfit font-medium">call center staffing </p>
+                        <p className="lg:w-96 text-lg font-outfit font-medium">job seekers  </p>
                     </span>
-                    <span className="flex gap-5 items-center w-full">
-                        <Button className="w-fit bg-transparent border border-[#f8fafc] hover:bg-[#2563EB] cursor-pointer rounded-full text-lg font-outfit font-medium">find your next hire</Button>
-                        <Button className="w-fit border-[#F8FAFC] text-lg rounded-full hover:bg-accent hover:text-[#2563EB]  hover:border-[#2563EB] bg-[#2563EB] cursor-pointer font-outfit font-medium">find your next job</Button>
+                    <span className="flex gap-2.5 lg:gap-5 items-center justify-center lg:justify-start w-full">
+                        <Button className="lg:w-fit bg-transparent border border-[#f8fafc] hover:bg-[#2563EB] cursor-pointer rounded-full text-xs lg:text-lg font-outfit font-medium">find your next hire</Button>
+                        <Button className="lg:w-fit border-[#F8FAFC]  lg:text-lg rounded-full hover:bg-accent hover:text-[#2563EB]  hover:border-[#2563EB] bg-[#2563EB] cursor-pointer font-outfit font-medium">find your next job</Button>
                     </span>
                 </div>
             </div>
-            <div className="bg-[#F8FAFC] px-8 py-8">
+            <div className="bg-[#F8FAFC] lg:w-full p-2 lg:px-8 lg:py-8">
 
-                <div className="flex justify-around w-full">
-                    <span className="flex w-1/2 flex-col gap-y-4">
-                        <h2 className="font-redRose  font-bold text-[#059669] text-6xl">hiring shouldn't be hard </h2>
+                <div className="flex flex-col-reverse lg:flex-row lg:justify-around lg:w-full">
+                    <span className="flex  lg:w-1/2 flex-col gap-y-4">
+                        <h2 className="font-redRose  font-bold text-[#059669] text-3xl lg:text-6xl">hiring shouldn't be hard </h2>
                         {/* <span className=" text-[#1E293B] flex mb-10 justify-end "> */}
-                        <p className="text-left font-outfit  text-xl ">We understand running a call center without the right team is overwhelming.
+                        <p className="text-left font-outfit text-base w-full lg:text-xl ">We understand running a call center without the right team is overwhelming.
 
                             We make it simple to build a high-performing team that drives results.</p>
                         {/* </span> */}
@@ -55,14 +59,14 @@ export const Hero = () => {
 
                     </span>
 
-                    <div className="w-1/3 " >
+                    <div className="lg:w-1/3 mb-4 lg:mb-0" >
                         <img src="/assets/download1.jpg" alt="" />
 
                     </div>
 
                 </div>
 
-                <span className="flex justify-center items-center mt-10 px-10 gap-6">
+                <span className="flex flex-col lg:w-full lg:flex-row justify-center items-center  mt-10 lg:px-10 gap-6">
                     {cardItems.map((item, idx) => {
                         const Icon = item.icon
                         return (
@@ -71,7 +75,7 @@ export const Hero = () => {
                                 className="flex-1 min-w-0 h-64 flex flex-col items-start px-4 py-6 relative"
                             >
                                 <Icon className=" text-[#059669]" />
-                                <CardTitle className="text-4xl w-2/3 font-rubik">{item.title}</CardTitle>
+                                <CardTitle className="text-4xl lg:w-2/3 font-rubik">{item.title}</CardTitle>
                                 <CardDescription className="text-lg font-poppins">{item.description}</CardDescription>
                             </Card>
                         )
@@ -81,16 +85,16 @@ export const Hero = () => {
             <Services />
             <Review />
 
-            <div className="py-8 px-16">
-                <div className="flex justify-between">
-                    <h1 className="font-bold text-5xl font-redRose w-1/2">Is your training costing you talent?</h1>
-                    <div className="w-1/3">
+            <div className=" lg:py-8 py-4 px-3 lg:px-16 ">
+                <div className="flex lg:flex-row flex-col justify-between">
+                    <h1 className="font-bold text-2xl lg:text-5xl font-redRose lg:w-1/2">Is your training costing you talent?</h1>
+                    <div className="lg:w-1/3">
                         <p className="font-outfit  text-lg">Your training may be well-intentioned, but is it effective?</p>
                         <button className="bg-[#059669]/50 px-3 py-1 text-white font-outfit border-[#059669] border mt-1 rounded-full">Download Your Free Copy Here</button>
                     </div>
 
                 </div>
-                <div className="grid my-10 grid-cols-3 gap-x-4">
+                <div className="grid my-10 grid-cols-1 gap-y-4 lg:grid-cols-3 gap-x-4">
                     <div className="">
                         <img src="/assets/job-seeker1.jpg" className="border-2 border-[#64748b] object-contain rounded-2xl" alt="" />
                     </div>

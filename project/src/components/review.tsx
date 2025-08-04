@@ -77,16 +77,16 @@ export const Review = () => {
     }
 
     return (
-        <div className="bg-[#F8FAFC] p-16">
-            <h1 className="text-4xl font-bold font-redRose">Your call center's success starts here</h1>
-            <p className="text-lg font-outfit">Imagine a thriving call center powered by a reliable, high-performance team:</p>
-            <div className="flex gap-x-4">
-                <p className="text-[#1E293B] py-1 my-3 font-poppins text-sm rounded-full border border-[#1E293B] w-fit px-4">Exceed Sales and Growth Targets</p>
-                <p className="text-[#1E293B] py-1 my-3 font-poppins text-sm rounded-full border border-[#1E293B] w-fit px-4">Delight Customers with Exceptional Service</p>
-                <p className="text-[#1E293B] py-1 my-3 font-poppins text-sm rounded-full border border-[#1E293B] w-fit px-4">Save Time, Resources, and Money</p>
-                <p className="text-[#1E293B] py-1 my-3 font-poppins text-sm rounded-full border border-[#1E293B] w-fit px-4">Cultivate a Team Culture that Delivers</p>
+        <div className="w-96 lg:w-full p-4 lg:p-16">
+            <h1 className="text-2xl lg:text-4xl font-bold font-redRose">Your call center's success starts here</h1>
+            <p className="text-xs lg:text-lg font-outfit">Imagine a thriving call center powered by a reliable, high-performance team:</p>
+            <div className="flex flex-col lg:flex-row  gap-x-4">
+                <p className="text-[#1E293B] py-1 my-1 lg:my-3 font-poppins text-sm rounded-full border border-[#1E293B] w-fit px-4">Exceed Sales and Growth Targets</p>
+                <p className="text-[#1E293B] py-1 my-1 lg:my-3 font-poppins text-sm rounded-full border border-[#1E293B] w-fit px-4">Delight Customers with Exceptional Service</p>
+                <p className="text-[#1E293B] py-1 my-1 lg:my-3 font-poppins text-sm rounded-full border border-[#1E293B] w-fit px-4">Save Time, Resources, and Money</p>
+                <p className="text-[#1E293B] py-1 my-1 lg:my-3 font-poppins text-sm rounded-full border border-[#1E293B] w-fit px-4">Cultivate a Team Culture that Delivers</p>
             </div>
-            <p className="text-lg font-outfit w-2/3">With GoldCore, you can stop worrying about hiring challenges
+            <p className="text-lg font-outfit  lg:w-2/3">With GoldCore, you can stop worrying about hiring challenges
                 and focus on what matters most—your call center's growth and impact
             </p>
 

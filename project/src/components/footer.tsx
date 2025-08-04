@@ -3,9 +3,9 @@ import { Link } from "react-router"
 
 export const Footer = () => {
     return (
-        <div className="text-white font-outfit bg-gradient-to-r from-[#34D399] via-[#065f46] to-[#34D399] p-16 flex justify-between">
+        <div className="text-white font-outfit bg-gradient-to-r from-[#34D399] via-[#065f46] to-[#34D399] p-3 lg:p-16 flex flex-col lg:flex-row justify-between">
 
-            <div className=" flex flex-col gap-y-4 text-lg font-semibold w-1/4">
+            <div className=" flex flex-col gap-y-4 text-lg font-semibold lg:w-1/4 mb-4 lg:mb-0">
                 <img src="/assets/logo-black.jpg" className="w-20 rounded-2xl mb-5" alt="" />
 
                 <ul className="p-4 font-rubik bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col gap-y-2">
@@ -20,7 +20,7 @@ export const Footer = () => {
 
                 </ul>
             </div>
-            <div className="text-lg  font-semibold">
+            <div className="text-lg mb-4 lg:mb-0 font-semibold">
                 <h3 className="font-lato text-3xl mb-3">Useful Icons</h3>
                 <ul className="p-4 font-rubik bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col gap-y-2">
 
@@ -34,7 +34,7 @@ export const Footer = () => {
                 </ul>
             </div>
 
-            <div className="text-lg  font-semibold">
+            <div className="text-lg mb-4 lg:mb-0 font-semibold">
                 <h3 className="font-lato text-3xl mb-3">Our Services</h3>
                 <ul className="p-4 font-rubik bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col gap-y-2">
                     <li>About Us</li>

@@ -1,5 +1,5 @@
 import { NavigationMenuComponent } from "@/components/navbar"
-import { Hero } from "./roles-we-staff/hero"
+import { Hero } from "../components/roles-we-staff/hero"
 
 export const RolesWeStaff=()=> {
     return (

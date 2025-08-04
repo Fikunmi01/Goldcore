@@ -93,9 +93,9 @@ export const Blog = () => {
     return (
         <div className=" bg-[#64748b] bg-gradient-to-br from-slate-250 via-emerald-50/30 to-gray-100">
             <NavigationMenuComponent />
-            <div className='px-24 py-8'>
-                <h1 className="text-4xl font-bold mb-8 text-[#1E293B] text-center">Hiring Trends & Insights</h1>
-                <div className="flex gap-5">
+            <div className='lg:px-24 px-4 py-4 lg:py-8'>
+                <h1 className="lg:text-4xl font-bold mb-4 lg:mb-8 text-[#1E293B] text-center">Hiring Trends & Insights</h1>
+                <div className="flex flex-col lg:flex-row gap-5">
                     {/* Main Featured Article */}
                     <div className="flex-1">
                         <Card className="h-full">
@@ -139,7 +139,7 @@ export const Blog = () => {
                     </div>
 
                     {/* Grid of Smaller Articles */}
-                    <div className="w-80 grid grid-rows-3">
+                    <div className="lg:w-80 grid grid-rows-3">
                         {gridPosts.map((post) => (
                             <Card key={post.id} className="h-fit">
                                 <CardHeader>
