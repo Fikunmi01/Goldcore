@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer"
 export const Hero = () => {
     return (
         <div className="bg-[#F8FAFC] absolute top-0 opacity-80  w-full ">
-            <img src="/assets/hero2.jpg" alt="" className="w-[100vh] h-screen object-cover lg:h-full lg:w-full"
+            <img src="/assets/hero2.jpg" alt="" className="w-full h-96 object-cover lg:h-full lg:w-full"
             />
 
             <div className="absolute lg:bottom-3/4 bottom-9/10 lg:inset-0 flex items-center lg:justify-end px-8 md:px-16 lg:px-24">
