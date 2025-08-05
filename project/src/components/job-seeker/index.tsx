@@ -25,8 +25,8 @@ export const Hero = () => {
         <div className="bg-[#F8FAFC] absolute top-0 opacity-80 overflow-hidden">
             <img className="opacity-65 w-[100vh] h-screen object-cover lg:h-full lg:w-full" src="/assets/hero3.jpg" alt="" />
             <div className="absolute top-48 px-8 text-[#1E293B]">
-                <p className="font-outfit text-center text-base font-medium">Explore local and remote customer service and call center job opportunities available.</p>
-                <h1 className="font-redRose text-center text-3xl  lg:text-6xl lg:w-2/5 font-bold">Find Your Next Customer Service Job with GoldCore!</h1>
+                <p className="font-outfit text-center lg:text-left text-base font-medium">Explore local and remote customer service and call center job opportunities available.</p>
+                <h1 className="font-redRose text-center text-3xl lg:text-left lg:text-6xl lg:w-2/5 font-bold">Find Your Next Customer Service Job with GoldCore!</h1>
             </div>
 
             <div className="bg-[#F8FAFC] lg:px-8 lg:py-8 p-3">

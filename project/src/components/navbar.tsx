@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { Button } from "./ui/button"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Menu, X } from "lucide-react"
 
 import {
@@ -17,6 +17,8 @@ import {
 export function NavigationMenuComponent() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,6 +37,13 @@ export function NavigationMenuComponent() {
         setIsMobileMenuOpen(!isMobileMenuOpen)
     }
 
+   const goHome = () => {
+    
+    return () => {
+        navigate('/');
+    };
+};
+
     return (
         <>
             {/* Navigation Bar - Higher z-index when mobile menu is open */}
@@ -50,11 +59,11 @@ export function NavigationMenuComponent() {
 
                 {/* Logo */}
                 {isScrolled || isMobileMenuOpen ?
-                    <button className="font-redRose text-2xl rounded-2xl py-4 w-screen lg:p-4">
+                    <button onClick={goHome()} className="font-redRose text-2xl cursor-pointer rounded-2xl py-4 w-screen lg:p-4">
                         <img src="/assets/logo-black.jpg" className="object-contain rounded-2xl w-16 lg:w-20 relative" alt="" />
                     </button>
                     :
-                    <button className="font-redRose text-2xl rounded-2xl">
+                    <button onClick={goHome()} className="font-redRose text-2xl cursor-pointer rounded-2xl">
                         <img src="/assets/logo-white.jpg" className="rounded-2xl object-contain w-16 lg:w-20" alt="" />
                     </button>
                 }
