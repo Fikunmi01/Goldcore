@@ -28,7 +28,7 @@ export const Hero = () => {
 
             <img
                 src="/assets/hero-bg.jpg"
-                className="w-[100vh] h-screen object-cover lg:h-full lg:w-full"
+                className=" w-full h-96 object-cover lg:h-full lg:w-full"
                 alt=""
             />
             <div className=" absolute top-48 px-4 lg:px-8 text-white">
