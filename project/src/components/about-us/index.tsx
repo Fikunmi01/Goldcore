@@ -64,7 +64,7 @@ export const AboutUsHero = () => {
 
     return (
         <div className="bg-[#F8FAFC] absolute top-0 opacity-80 w-full">
-            <img src="/assets/about-us.jpg" alt="" className="w-[100vh] h-screen object-cover lg:h-full lg:w-full" />
+            <img src="/assets/about-us.jpg" alt="" className="w-full h-full object-cover lg:h-full lg:w-full" />
 
             <div className="absolute inset-0 flex items-center bottom-17/18 z-99 lg:bottom-3/4 justify-center px-4 sm:px-8 md:px-16 lg:px-24">
                 <div className="text-white w-full max-w-2xl text-center space-y-2">

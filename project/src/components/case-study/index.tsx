@@ -37,8 +37,8 @@ export const CaseStudyHero = () => {
     ]
     return (
         <div className="bg-[#F8FAFC] absolute top-0  w-full">
-            <img className="w-[100vh] h-screen object-cover lg:h-full lg:w-full" src="/assets/case-studyhero.jpg"  alt="" />
-            <div className="absolute top-48 text-center lg:text-start lg:px-8 text-[#fff]">
+            <img className="w-full h-96 object-cover lg:h-full lg:w-full" src="/assets/case-studyhero.jpg"  alt="" />
+            <div className="absolute top-24 lg:top-48 text-center lg:text-start lg:px-8 text-[#fff]">
                 <p className="font-outfit text-base font-semibold">Case studies and resources</p>
                 <h1 className="font-redRose text-2xl lg:text-5xl lg:w-3/5 font-bold">Explore how we have empowered call centers to overcome obstacles and achieve excellence through our tailored, effective staffing solutions.</h1>
             </div>
