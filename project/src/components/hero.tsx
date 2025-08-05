@@ -32,7 +32,7 @@ export const Hero = () => {
                 alt=""
             />
             <div className=" absolute top-48 px-4 lg:px-8 text-white">
-                <p className="font-outfit text-center text-xs lg:text-base font-medium">Your call Center's Success Starts with expert Staffing Solution</p>
+                <p className="font-outfit text-center lg:text-left text-xs lg:text-base font-medium">Your call Center's Success Starts with expert Staffing Solution</p>
                 <h1 className="font-redRose  text-center lg:text-left text-4xl lg:text-7xl lg:w-2/5 font-bold">Call Center Staffing Made Simple</h1>
                 <div className="flex-col justify-center items-center lg:items-start lg:left-0 relative lg:justify-start flex gap-4">
                     <span className="flex items-center gap-3 lg:gap-5 lg:w-96">

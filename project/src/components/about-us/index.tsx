@@ -64,7 +64,7 @@ export const AboutUsHero = () => {
 
     return (
         <div className="bg-[#F8FAFC] absolute top-0 opacity-80 w-full">
-            <img src="/assets/about-us.jpg" alt="" className="w-full h-full object-cover" />
+            <img src="/assets/about-us.jpg" alt="" className="w-full  h-full object-cover" />
 
             <div className="absolute inset-0 flex items-center bottom-17/18 z-99 lg:bottom-3/4 justify-center px-4 sm:px-8 md:px-16 lg:px-24">
                 <div className="text-white w-full max-w-2xl text-center space-y-2">
@@ -84,11 +84,11 @@ export const AboutUsHero = () => {
                 <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl text-center font-outfit text-[#1E293B] mt-8 mb-4">Our core values</h2>
 
                 {/* Responsive grid for values */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 my-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-4 lg:my-4">
                     {aboutUsArray.map((item, index) => {
                         const Icon = item.icon
                         return (
-                            <Card key={index} className="backdrop-blur-sm rounded-xl my-4 shadow-lg">
+                            <Card key={index} className="backdrop-blur-sm rounded-xl my-2 lg:my-4 shadow-lg">
                                 <CardHeader className="flex justify-center items-center">
                                     <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-[#059669]" />
                                 </CardHeader>
@@ -106,7 +106,7 @@ export const AboutUsHero = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
                     {teamArray.map((item, index) => {
                         return (
-                            <Card key={index} className="backdrop-blur-sm rounded-xl my-4 shadow-lg">
+                            <Card key={index} className="backdrop-blur-sm rounded-xl lg:my-4 shadow-lg">
                                 <CardHeader className="flex justify-center items-center">
                                     <img
                                         src={item.img}

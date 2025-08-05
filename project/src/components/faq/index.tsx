@@ -61,16 +61,16 @@ export const FAQHero = () => {
 
     return (
         <div className="bg-[#1E293B] absolute top-0 w-full">
-            <div className="bg-[#F8FAFC] flex-col mt-23 w-full flex items-center justify-center p-16 relative">
-                <h1 className="font-redRose text-3xl font-bold text-[#1E293B] mb-4">
+            <div className="bg-[#F8FAFC] flex-col mt-23 w-full flex items-center justify-center p-4 lg:p-16 relative">
+                <h1 className="font-redRose lg:text-3xl text-2xl text-center font-bold text-[#1E293B] mb-4">
                     Frequently Asked Questions
                 </h1>
-                <p className="text-xl font-outfit w-2/3 text-center mx-auto mb-8">
+                <p className="text-xl font-outfit lg:w-2/3 text-center mx-auto mb-8">
                     Here are answers to common questions about our company.
                     Have any more questions? Feel free to contact us and request a free consultation.
                 </p>
 
-                <div className="w-2/3 space-y-4">
+                <div className="lg:w-2/3 space-y-4">
                     {faqData.map((faq) => (
                         <Card key={faq.id} className="transition-all duration-200 hover:shadow-md">
                             <CardHeader

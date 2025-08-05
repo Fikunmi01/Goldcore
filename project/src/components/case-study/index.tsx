@@ -37,13 +37,13 @@ export const CaseStudyHero = () => {
     ]
     return (
         <div className="bg-[#F8FAFC] absolute top-0  w-full">
-            <img className="" src="/assets/case-studyhero.jpg" alt="" />
-            <div className="absolute top-48 px-8 text-[#fff]">
+            <img className="w-[100vh] h-screen object-cover lg:h-full lg:w-full" src="/assets/case-studyhero.jpg"  alt="" />
+            <div className="absolute top-48 text-center lg:text-start lg:px-8 text-[#fff]">
                 <p className="font-outfit text-base font-semibold">Case studies and resources</p>
-                <h1 className="font-redRose text-5xl w-3/5 font-bold">Explore how we have empowered call centers to overcome obstacles and achieve excellence through our tailored, effective staffing solutions.</h1>
+                <h1 className="font-redRose text-2xl lg:text-5xl lg:w-3/5 font-bold">Explore how we have empowered call centers to overcome obstacles and achieve excellence through our tailored, effective staffing solutions.</h1>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 p-16">
+            <div className="grid p-4 grid-cols-1 lg:grid-cols-3 gap-6 lg:p-16">
                 {caseStudyArray.map((item,index) => {
                     return (
                         <Card key={index}>

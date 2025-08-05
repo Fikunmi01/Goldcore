@@ -94,7 +94,7 @@ export const JobSearch = () => {
     }
 
     return (
-        <div className="p-20">
+        <div className="lg:p-20 p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {currentJobs.map((job) => (
                     <Card key={job.id} className="w-full">

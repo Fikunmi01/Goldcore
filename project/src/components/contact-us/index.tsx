@@ -24,9 +24,9 @@ export const ContactUsHero = () => {
 
     return (
         <div className="bg-[#1E293B] absolute top-0 w-full">
-            <div className="bg-[#F8FAFC] flex-row mt-23 w-full flex items-center justify-start gap-x-6  p-16 relative">
-                <div className="w-1/2">
-                    <h1 className="font-redRose text-3xl font-bold text-[#1E293B] mb-4">
+            <div className="bg-[#F8FAFC] mt-23 w-full flex lg:flex-row flex-col p-4 lg:items-center justify-start gap-x-6 lg:p-16 relative">
+                <div className="lg:w-1/2">
+                    <h1 className="font-redRose text-3xl font-bold text-[#1E293B] mt-4 lg:mb-4">
                         Contact us
                     </h1>
                     <p className="text-lg font-rubik ">
@@ -39,7 +39,7 @@ export const ContactUsHero = () => {
                         Fax: 813-289-3631
                     </p>
 
-                    <p className="text-lg w-1/2 font-rubik ">
+                    <p className="text-lg lg:w-1/2 font-rubik ">
                         GoldCore
                         5102 West Laurel St.
                         Suite 500
@@ -49,7 +49,7 @@ export const ContactUsHero = () => {
                         Phone: 813-449-4800
                     </p>
                 </div>
-                <div className="w-2/3">
+                <div className="lg:w-2/3 my-4 lg:my-0">
                     <Card>
 
 
