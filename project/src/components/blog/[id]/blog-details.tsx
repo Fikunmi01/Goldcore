@@ -275,9 +275,9 @@ export const BlogDetails = () => {
     }
 
     return (    
-        <div className="  mx-auto bg-[#64748b] bg-gradient-to-br from-slate-250 via-emerald-50/30 to-gray-100">
+        <div className=" mx-auto bg-[#64748b] bg-gradient-to-br from-slate-250 via-emerald-50/30 to-gray-100">
             <NavigationMenuComponent />
-            <div className="mb-6 px-24">
+            <div className="mb-6 lg:px-24 px-4">
                 <button
                     onClick={handleGoBack}
                     className="flex items-center gap-2 text-white font-outfit cursor-pointer hover:text-white/80 transition-colors mb-4"
@@ -288,7 +288,7 @@ export const BlogDetails = () => {
             </div>
 
             {/* Main Article */}
-            <Card className="mb-8 mx-24 font-outfit">
+            <Card className="mb-8 mx-4 lg:mx-24 font-outfit">
                 <CardHeader>
                     <div className="flex items-center gap-2 mb-3">
                         <blogPost.icon className={`h-5 w-5 ${blogPost.iconColor}`} />
@@ -376,7 +376,7 @@ export const BlogDetails = () => {
 
             {/* Related Posts */}
             {blogPost.relatedPosts && blogPost.relatedPosts.length > 0 && (
-                <Card className='m-24 font-outfit'>
+                <Card className='m-4 lg:m-24 font-outfit'>
                     <CardHeader>
                         <CardTitle className="text-xl">Related Articles</CardTitle>
                     </CardHeader>
