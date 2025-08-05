@@ -1,5 +1,5 @@
-
-import { Route, Routes } from 'react-router'
+import { Route, Routes, useLocation } from 'react-router'
+import { useEffect } from 'react'
 import './App.css'
 import { Homepage } from './pages/Hompeage'
 import { BlogDetails } from './components/blog/[id]/blog-details'
@@ -11,23 +11,34 @@ import { CaseStudy } from './pages/case-study'
 import { FAQPage } from './pages/faq'
 import { ContactUsPage } from './pages/contact-us'
 
+// ScrollToTop component
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
-
   return (
-    <Routes>
-
-      <Route path='roles-we-staff' element={<RolesWeStaff />} />
-      <Route path='about-us' element={<AboutUs />} />
-      <Route path='case-study' element={<CaseStudy />} />
-      <Route path='faq' element={<FAQPage />} />
-      <Route path='contact-us' element={<ContactUsPage />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/job-seeker" element={<JobSeeker />} />
-      <Route path="/blog/:id" element={<BlogDetails />} />
-      <Route path="" element={<Homepage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path='roles-we-staff' element={<RolesWeStaff />} />
+        <Route path='about-us' element={<AboutUs />} />
+        <Route path='case-study' element={<CaseStudy />} />
+        <Route path='faq' element={<FAQPage />} />
+        <Route path='contact-us' element={<ContactUsPage />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/job-seeker" element={<JobSeeker />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
+        <Route path="" element={<Homepage />} />
+      </Routes>
+    </>
   )
-
 }
 
 export default App
