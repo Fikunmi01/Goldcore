@@ -1,4 +1,5 @@
-import { Route, Routes, useLocation } from 'react-router'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { Analytics } from "@vercel/analytics/react"
 import { useEffect } from 'react'
 import './App.css'
 import { Homepage } from './pages/Hompeage'
@@ -14,32 +15,32 @@ import { ContactUsPage } from './pages/contact-us'
 // ScrollToTop component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
+  
   useEffect(() => {
     if (pathname !== '/search-all-jobs') {
       window.scrollTo(0, 0);
     }
   }, [pathname]);
-
-
+    
   return null;
 };
 
 function App() {
   return (
     <>
+      <Analytics />
       <ScrollToTop />
       <Routes>
-        <Route path='roles-we-staff' element={<RolesWeStaff />} />
-        <Route path='about-us' element={<AboutUs />} />
-        <Route path='case-study' element={<CaseStudy />} />
-        <Route path='faq' element={<FAQPage />} />
-        <Route path='contact-us' element={<ContactUsPage />} />
+        <Route path="/roles-we-staff" element={<RolesWeStaff />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/case-study" element={<CaseStudy />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/job-seeker" element={<JobSeeker />} />
         <Route path="/search-all-jobs" element={<JobSeeker />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
-        <Route path="" element={<Homepage />} />
+        <Route index element={<Homepage />} />
       </Routes>
     </>
   )
