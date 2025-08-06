@@ -148,7 +148,7 @@ export const ContactUsHero = () => {
 
 
                                 <Button type="submit" className="w-full bg-[#059669] hover:bg-[#059669]/80 cursor-pointer">
-                                    Find Jobs
+                                    Send Message
                                 </Button>
                             </form>
                         </Form>

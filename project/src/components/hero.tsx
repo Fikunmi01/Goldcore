@@ -4,6 +4,7 @@ import { Card, CardDescription, CardTitle } from "./ui/card"
 import { Services } from "./services"
 import { Review } from "./review"
 import { Blog } from "./blog"
+import { Link } from "react-router"
 
 export const Hero = () => {
     const cardItems = [
@@ -31,7 +32,7 @@ export const Hero = () => {
                 className=" w-full h-96 object-cover lg:h-full lg:w-full"
                 alt=""
             />
-            <div className=" absolute top-48 px-4 lg:px-8 text-white">
+            <div className=" absolute top-32 lg:top-48 px-4 lg:px-8 text-white">
                 <p className="font-outfit text-center lg:text-left text-xs lg:text-base font-medium">Your call Center's Success Starts with expert Staffing Solution</p>
                 <h1 className="font-redRose  text-center lg:text-left text-4xl lg:text-7xl lg:w-2/5 font-bold">Call Center Staffing Made Simple</h1>
                 <div className="flex-col justify-center items-center lg:items-start lg:left-0 relative lg:justify-start flex gap-4">
@@ -39,9 +40,12 @@ export const Hero = () => {
                         <p className="lg:w-96 text-lg font-outfit font-medium">call center staffing </p>
                         <p className="lg:w-96 text-lg font-outfit font-medium">job seekers  </p>
                     </span>
-                    <span className="flex gap-2.5 lg:gap-5 items-center justify-center lg:justify-start w-full">
-                        <Button className="lg:w-fit bg-transparent border border-[#f8fafc] hover:bg-[#2563EB] cursor-pointer rounded-full text-xs lg:text-lg font-outfit font-medium">find your next hire</Button>
-                        <Button className="lg:w-fit border-[#F8FAFC]  lg:text-lg rounded-full hover:bg-accent hover:text-[#2563EB]  hover:border-[#2563EB] bg-[#2563EB] cursor-pointer font-outfit font-medium">find your next job</Button>
+                    <span className="flex gap-2.5 lg:gap-5 items-center justify-center  lg:justify-start w-full">
+                        {/* <Button className="lg:w-fit bg-transparent border border-[#f8fafc] hover:bg-[#2563EB] cursor-pointer rounded-full text-xs lg:text-lg font-outfit font-medium">find your next hire</Button> */}
+                        <Link to="/job-seeker">
+                            <Button className="lg:w-fit border-[#F8FAFC]  lg:text-lg rounded-full hover:bg-accent hover:text-[#059669]  hover:border-[#059669] bg-[#059669] cursor-pointer font-outfit font-medium">find your next job</Button>
+
+                        </Link>
                     </span>
                 </div>
             </div>
@@ -55,7 +59,10 @@ export const Hero = () => {
 
                             We make it simple to build a high-performing team that drives results.</p>
                         {/* </span> */}
-                        <Button className="bg-[#059669] w-fit font-lato font-medium text-base">Schedule a call today</Button>
+                        <Link to="/contact-us">
+                            <Button className="bg-[#059669] hover:bg-[#059669]/80 w-fit font-lato font-medium text-base">Schedule a call today</Button>
+
+                        </Link>
 
                     </span>
 

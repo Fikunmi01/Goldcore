@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader } from "../ui/card"
 import { Plus, Minus } from "lucide-react"
 import { Footer } from "../footer"
+import { Link } from "react-router"
 
 const faqData = [
     {
@@ -111,8 +112,9 @@ export const FAQHero = () => {
                 <div className="my-4">
                     <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl text-center font-redRose text-[#1E293B] mt-8 mb-4">Still have a Question?</h2>
 
-
-                    <button className="flex cursor-pointer mx-auto text-center rounded-full px-4 font-rubik py-1 text-[#fff] bg-[#059669]">Contact us</button>
+                    <Link to="/contact-us">
+                        <button className="flex cursor-pointer mx-auto text-center rounded-full px-4 font-rubik py-1 text-[#fff] bg-[#059669]">Contact us</button>
+                    </Link>
                 </div>
             </div>
 

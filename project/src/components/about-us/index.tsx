@@ -133,7 +133,9 @@ export const AboutUsHero = () => {
                         You’ve seen how passionate we are about connecting the right people with the right opportunities. Ready to see what we can do for you? Let’s chat—we’ll bring the coffee (and the candidates).
                     </p>
 
-                    <button className="flex cursor-pointer mx-auto text-center rounded-full px-4 font-rubik py-1 text-[#fff] bg-[#059669]">Schedule a call now</button>
+                    <Link to="/contact-us">
+                        <button className="flex cursor-pointer mx-auto text-center rounded-full px-4 font-rubik py-1 text-[#fff] bg-[#059669]">Schedule a call now</button>
+                    </Link>
                 </div>
 
                 <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl text-center font-outfit text-[#1E293B] mt-8 mb-4">Ready to join a team as passionate as ours?</h2>

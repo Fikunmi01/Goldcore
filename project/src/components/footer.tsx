@@ -21,13 +21,21 @@ export const Footer = () => {
                 </ul>
             </div>
             <div className="text-lg mb-4 lg:mb-0 font-semibold">
-                <h3 className="font-lato text-3xl mb-3">Useful Icons</h3>
+                <h3 className="font-lato text-3xl mb-12">Useful Icons</h3>
                 <ul className="p-4 font-rubik bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col gap-y-2">
 
-                    <li>Search Positions</li>
-                    <li>For Employers</li>
-                    <li>For Job Seekers </li>
-                    <li>Schedule a Call</li>
+                    <Link to="/job-seeker">
+                        <li>Search Positions</li>
+                    </Link>
+                    {/* <Link to="/job-seeker">
+                        <li>For Employers</li>
+                    </Link> */}
+                    <Link to="/job-seeker">
+                        <li>For Job Seekers </li>
+                    </Link>
+                    <Link to="/contact-us">
+                        <li>Schedule a Call</li>
+                    </Link>
                     <Link to="/blog">
                         <li>Our Blog</li>
                     </Link>
@@ -35,14 +43,21 @@ export const Footer = () => {
             </div>
 
             <div className="text-lg mb-4 lg:mb-0 font-semibold">
-                <h3 className="font-lato text-3xl mb-3">Our Services</h3>
+                <h3 className="font-lato text-3xl mb-12">Our Services</h3>
                 <ul className="p-4 font-rubik bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col gap-y-2">
-                    <li>About Us</li>
-                    <li>Privacy Policy</li>
-                    <li>Associate Resources </li>
-                    <li>Contact Us</li>
-                    <li>Case Studies & Resource</li>
-
+                    <Link to="/about-us">
+                        <li>About Us</li>
+                    </Link>
+                    <Link to="/faq">
+                        <li>FAQ</li>
+                    </Link>
+                    {/* <li>Resources </li> */}
+                    <Link to="/contact-us">
+                        <li>Contact Us</li>
+                    </Link>
+                    <Link to="/case-study">
+                        <li>Case Studies & Resource</li>
+                    </Link>
                 </ul>
             </div>
 

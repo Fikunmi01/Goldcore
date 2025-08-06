@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { Button } from "./ui/button"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { Menu, X } from "lucide-react"
 
 import {
@@ -17,8 +17,43 @@ import {
 export function NavigationMenuComponent() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const [shouldScrollToJobs, setShouldScrollToJobs] = useState(false)
     const navigate = useNavigate();
+    const location = useLocation();
 
+    // Handle scrolling after route change
+    useEffect(() => {
+        if (shouldScrollToJobs && location.pathname === '/search-all-jobs') {
+            const scrollToSection = () => {
+                const jobSearchSection = document.getElementById('job-search-section');
+                if (jobSearchSection) {
+                    jobSearchSection.scrollIntoView({ behavior: 'smooth' });
+                    setShouldScrollToJobs(false);
+                }
+            };
+            
+            // Small delay to ensure page is rendered
+            const timer = setTimeout(scrollToSection, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [location.pathname, shouldScrollToJobs]);
+
+    const handleSearchAllJobs = () => {
+        setIsMobileMenuOpen(false); // Close mobile menu if open
+
+        // Check if we're already on job-seeker or search-all-jobs page
+        if (location.pathname === '/job-seeker' || location.pathname === '/search-all-jobs') {
+            // Already on the right page - just scroll to section
+            const jobSearchSection = document.getElementById('job-search-section');
+            if (jobSearchSection) {
+                jobSearchSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            // On different page - navigate to search-all-jobs first, then scroll
+            setShouldScrollToJobs(true);
+            navigate('/search-all-jobs');
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -37,12 +72,9 @@ export function NavigationMenuComponent() {
         setIsMobileMenuOpen(!isMobileMenuOpen)
     }
 
-   const goHome = () => {
-    
-    return () => {
+    const goHome = () => {
         navigate('/');
     };
-};
 
     return (
         <>
@@ -59,12 +91,12 @@ export function NavigationMenuComponent() {
 
                 {/* Logo */}
                 {isScrolled || isMobileMenuOpen ?
-                    <button onClick={goHome()} className="font-redRose text-2xl cursor-pointer rounded-2xl py-4 w-screen lg:p-4">
-                        <img src="/assets/logo-black.jpg" className="object-contain rounded-2xl w-16 lg:w-20 relative" alt="" />
+                    <button onClick={goHome} className="font-redRose text-2xl cursor-pointer rounded-2xl py-4 w-fit lg:p-4">
+                        <img src="/assets/logo-black.jpg" className="object-contain border-2 border-[#FFD700] rounded-2xl w-20 lg:w-24 relative" alt="" />
                     </button>
                     :
-                    <button onClick={goHome()} className="font-redRose text-2xl cursor-pointer rounded-2xl">
-                        <img src="/assets/logo-white.jpg" className="rounded-2xl object-contain w-16 lg:w-20" alt="" />
+                    <button onClick={goHome} className="font-redRose text-2xl cursor-pointer rounded-2xl">
+                        <img src="/assets/logo-white.jpg" className="rounded-2xl border-2 border-[#FFD700] object-contain w-20 lg:w-24" alt="" />
                     </button>
                 }
 
@@ -74,8 +106,8 @@ export function NavigationMenuComponent() {
                         <NavigationMenuItem>
                             <NavigationMenuTrigger
                                 className={`transition-colors duration-300 ${isScrolled
-                                        ? 'text-gray-900 hover:text-gray-700'
-                                        : 'text-white'
+                                    ? 'text-gray-900 hover:text-gray-700'
+                                    : 'text-white'
                                     }`}
                             >
                                 Staffing Solutions
@@ -91,8 +123,8 @@ export function NavigationMenuComponent() {
                             <NavigationMenuLink
                                 asChild
                                 className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${isScrolled
-                                        ? 'text-gray-900 hover:text-gray-700'
-                                        : 'text-white'
+                                    ? 'text-gray-900 hover:text-gray-700'
+                                    : 'text-white'
                                     }`}
                             >
                                 <Link to="/job-seeker">For Job Seekers</Link>
@@ -103,8 +135,8 @@ export function NavigationMenuComponent() {
                             <NavigationMenuLink
                                 asChild
                                 className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${isScrolled
-                                        ? 'text-gray-900 hover:text-gray-700'
-                                        : 'text-white'
+                                    ? 'text-gray-900 hover:text-gray-700'
+                                    : 'text-white'
                                     }`}
                             >
                                 <Link to="/about-us">About Us</Link>
@@ -114,8 +146,8 @@ export function NavigationMenuComponent() {
                         <NavigationMenuItem>
                             <NavigationMenuTrigger
                                 className={`transition-colors duration-300 ${isScrolled
-                                        ? 'text-gray-900 hover:text-gray-700'
-                                        : 'text-white'
+                                    ? 'text-gray-900 hover:text-gray-700'
+                                    : 'text-white'
                                     }`}
                             >
                                 Insights
@@ -147,15 +179,15 @@ export function NavigationMenuComponent() {
                             <NavigationMenuLink
                                 asChild
                                 className={`${navigationMenuTriggerStyle()} transition-colors duration-300 ${isScrolled
-                                        ? 'text-gray-900 hover:text-gray-700'
-                                        : 'text-white'
+                                    ? 'text-gray-900 hover:text-gray-700'
+                                    : 'text-white'
                                     }`}
                             >
                                 <Link to="/contact-us">Contact Us</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
 
-                        <NavigationMenuItem>
+                        <NavigationMenuItem onClick={handleSearchAllJobs}>
                             <Button className={`bg-transparent text-[#059669] font-bold cursor-pointer border-none transition-colors duration-300 ${isScrolled ? 'hover:bg-transparent' : ''
                                 }`}>
                                 Search All Jobs
@@ -184,7 +216,7 @@ export function NavigationMenuComponent() {
             {/* Mobile Menu Overlay - Lower z-index */}
             {isMobileMenuOpen && (
                 <div className="lg:hidden fixed left-0 right-0 top-0 bg-white z-40 min-h-screen">
-                    <div className="flex flex-col pt-20 p-6 space-y-4">
+                    <div className="flex flex-col pt-24 p-6 space-y-4">
                         {/* Mobile Menu Items */}
                         <div className="space-y-2">
                             <h3 className="font-semibold text-gray-900 text-lg">Staffing Solutions</h3>

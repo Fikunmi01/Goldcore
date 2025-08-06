@@ -16,8 +16,11 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (pathname !== '/search-all-jobs') {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
+
 
   return null;
 };
@@ -34,6 +37,7 @@ function App() {
         <Route path='contact-us' element={<ContactUsPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/job-seeker" element={<JobSeeker />} />
+        <Route path="/search-all-jobs" element={<JobSeeker />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="" element={<Homepage />} />
       </Routes>

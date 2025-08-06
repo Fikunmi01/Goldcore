@@ -1,4 +1,5 @@
 import { ArrowLeftRightIcon, ChartLine, HandshakeIcon, Users } from "lucide-react"
+import { Link } from "react-router"
 
 export const Perks = () => {
     return (
@@ -114,7 +115,9 @@ export const Perks = () => {
                     </span>
                 </div>
             </div>
-            <button className="font-poppins font-semibold text-lg flex mx-auto justify-center px-4 py-1 w-fit rounded-full text-white bg-[#059669]">Schedule a Call Today and Get Started</button>
+            <Link to='/contact-us'>
+                <button className="font-poppins font-semibold text-lg flex mx-auto justify-center px-4 py-1 w-fit rounded-full text-white bg-[#059669]">Schedule a Call Today and Get Started</button>
+            </Link>
 
         </div>
     )
