@@ -23,11 +23,6 @@ export const ContactUsHero = () => {
         }
     })
 
-    // Initialize EmailJS (you'll get these from your EmailJS dashboard)
-    const EMAILJS_SERVICE_ID = "your_service_id" // Replace with your service ID
-    const EMAILJS_TEMPLATE_ID = "your_template_id" // Replace with your template ID  
-    const EMAILJS_PUBLIC_KEY = "your_public_key" // Replace with your public key
-
     const onSubmit = async (data: { firstname: string; lastname: string; email: string; comment: string; phonenumber: string; jobcategory: string }) => {
         setIsSubmitting(true)
         setSubmitStatus('idle')
@@ -37,18 +32,18 @@ export const ContactUsHero = () => {
         const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
         const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
-        // Debug: Log to check if env vars are loaded
-        console.log('Service ID:', serviceId)
-        console.log('Template ID:', templateId)
-        console.log('Public Key:', publicKey)
+        // Check if environment variables are loaded
+        if (!serviceId || !templateId || !publicKey) {
+            console.error('EmailJS environment variables are missing!')
+            setSubmitStatus('error')
+            setIsSubmitting(false)
+            return
+        }
 
         try {
-            // EmailJS template parameters - matching the professional template
+            // EmailJS template parameters - matching your actual template variables
             const templateParams = {
                 name: `${data.firstname} ${data.lastname}`,
-                email: data.email,
-                phone: data.phonenumber,
-                category: data.jobcategory,
                 time: new Date().toLocaleString('en-US', {
                     weekday: 'long',
                     year: 'numeric',
@@ -58,7 +53,14 @@ export const ContactUsHero = () => {
                     minute: '2-digit',
                     timeZoneName: 'short'
                 }),
-                message: data.comment || 'No message provided'
+                message: `
+Email: ${data.email}
+Phone: ${data.phonenumber}
+Category: ${data.jobcategory}
+
+Message:
+${data.comment || 'No message provided'}
+                `.trim()
             }
 
             // Send email using EmailJS with env variables
