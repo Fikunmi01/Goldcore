@@ -21,6 +21,12 @@ export function NavigationMenuComponent() {
     const navigate = useNavigate();
     const location = useLocation();
 
+       const handleScheduleCall = () => {
+        const phoneNumber = "813-449-4800"
+        // Create tel: link to open phone dialer
+        window.location.href = `tel:${phoneNumber}`
+    }
+
     // Handle scrolling after route change
     useEffect(() => {
         if (shouldScrollToJobs && location.pathname === '/search-all-jobs') {
@@ -195,7 +201,7 @@ export function NavigationMenuComponent() {
                         </NavigationMenuItem>
 
                         <NavigationMenuItem>
-                            <Button className={`bg-[#2563EB] cursor-pointer transition-colors duration-300 ${isScrolled ? 'hover:bg-[#1D4ED8]' : ''
+                            <Button onClick={handleScheduleCall} className={`bg-[#2563EB] cursor-pointer transition-colors duration-300 ${isScrolled ? 'hover:bg-[#1D4ED8]' : ''
                                 }`}>
                                 Schedule a Call Now
                             </Button>

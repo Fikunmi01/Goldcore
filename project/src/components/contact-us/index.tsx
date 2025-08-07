@@ -5,8 +5,13 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form"
 import { Button } from "../ui/button"
 import { useForm } from "react-hook-form"
 import { Footer } from "../footer"
+import { useState } from "react"
+import emailjs from '@emailjs/browser'
 
 export const ContactUsHero = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
     const form = useForm({
         defaultValues: {
             lastname: "",
@@ -18,8 +23,74 @@ export const ContactUsHero = () => {
         }
     })
 
-    const onSubmit = (data: { firstname: string; lastname: string; email: string; comment: string; phonenumber: string; jobcategory: string }) => {
-        console.log(data)
+    // Initialize EmailJS (you'll get these from your EmailJS dashboard)
+    const EMAILJS_SERVICE_ID = "your_service_id" // Replace with your service ID
+    const EMAILJS_TEMPLATE_ID = "your_template_id" // Replace with your template ID  
+    const EMAILJS_PUBLIC_KEY = "your_public_key" // Replace with your public key
+
+    const onSubmit = async (data: { firstname: string; lastname: string; email: string; comment: string; phonenumber: string; jobcategory: string }) => {
+        setIsSubmitting(true)
+        setSubmitStatus('idle')
+
+        // Get EmailJS credentials from environment variables
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+        // Debug: Log to check if env vars are loaded
+        console.log('Service ID:', serviceId)
+        console.log('Template ID:', templateId)
+        console.log('Public Key:', publicKey)
+
+        try {
+            // EmailJS template parameters - matching the professional template
+            const templateParams = {
+                name: `${data.firstname} ${data.lastname}`,
+                email: data.email,
+                phone: data.phonenumber,
+                category: data.jobcategory,
+                time: new Date().toLocaleString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    timeZoneName: 'short'
+                }),
+                message: data.comment || 'No message provided'
+            }
+
+            // Send email using EmailJS with env variables
+            const response = await emailjs.send(
+                serviceId,
+                templateId,
+                templateParams,
+                publicKey
+            )
+
+            console.log('Email sent successfully:', response)
+            setSubmitStatus('success')
+            
+            // Reset form after successful submission
+            form.reset()
+            
+            // Optional: Show success message for 5 seconds
+            setTimeout(() => {
+                setSubmitStatus('idle')
+            }, 5000)
+
+        } catch (error) {
+            console.error('Failed to send email:', error)
+            setSubmitStatus('error')
+            
+            // Hide error message after 5 seconds
+            setTimeout(() => {
+                setSubmitStatus('idle')
+            }, 5000)
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
@@ -30,7 +101,7 @@ export const ContactUsHero = () => {
                         Contact us
                     </h1>
                     <p className="text-lg font-rubik ">
-                        We’re eager to hear from you.
+                        We're eager to hear from you.
                     </p>
                     <p className="text-lg font-rubik ">
                         Phone: 813-449-4800
@@ -51,8 +122,6 @@ export const ContactUsHero = () => {
                 </div>
                 <div className="lg:w-2/3 my-4 lg:my-0">
                     <Card>
-
-
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 p-6">
                                 <FormField
@@ -60,7 +129,6 @@ export const ContactUsHero = () => {
                                     name="jobcategory"
                                     render={({ field }) => (
                                         <FormItem>
-                                            {/* <FormLabel>Location</FormLabel> */}
                                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                 <FormControl>
                                                     <SelectTrigger className="w-full">
@@ -68,8 +136,8 @@ export const ContactUsHero = () => {
                                                     </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
-                                                    <SelectItem value="new-york">Job Seeker</SelectItem>
-                                                    <SelectItem value="phoenix">Employer</SelectItem>
+                                                    <SelectItem value="Job Seeker">Job Seeker</SelectItem>
+                                                    <SelectItem value="Employer">Employer</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                             <FormMessage />
@@ -83,7 +151,6 @@ export const ContactUsHero = () => {
                                         name="firstname"
                                         render={({ field }) => (
                                             <FormItem>
-                                                {/* <FormLabel>Job Title</FormLabel> */}
                                                 <FormControl>
                                                     <Input required placeholder="First Name" {...field} />
                                                 </FormControl>
@@ -134,22 +201,41 @@ export const ContactUsHero = () => {
 
                                 <FormField
                                     control={form.control}
-                                    name="phonenumber"
+                                    name="comment"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
-                                                <textarea className="border p-4 rounded-xl" {...field} placeholder="Comment or Message"></textarea>
+                                                <textarea 
+                                                    className="border p-4 rounded-xl w-full min-h-[100px] resize-vertical" 
+                                                    {...field} 
+                                                    placeholder="Comment or Message"
+                                                ></textarea>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
 
-
-
-                                <Button type="submit" className="w-full bg-[#059669] hover:bg-[#059669]/80 cursor-pointer">
-                                    Send Message
+                                <Button 
+                                    type="submit" 
+                                    disabled={isSubmitting}
+                                    className="w-full bg-[#059669] hover:bg-[#059669]/80 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isSubmitting ? 'Sending...' : 'Send Message'}
                                 </Button>
+
+                                {/* Status Messages */}
+                                {submitStatus === 'success' && (
+                                    <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+                                        ✅ Message sent successfully! We'll get back to you soon.
+                                    </div>
+                                )}
+                                
+                                {submitStatus === 'error' && (
+                                    <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                                        ❌ Failed to send message. Please try again or contact us directly.
+                                    </div>
+                                )}
                             </form>
                         </Form>
                     </Card>
