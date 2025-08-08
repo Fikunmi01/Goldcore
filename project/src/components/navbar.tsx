@@ -22,7 +22,7 @@ export function NavigationMenuComponent() {
     const location = useLocation();
 
        const handleScheduleCall = () => {
-        const phoneNumber = "813-449-4800"
+        const phoneNumber = "302-500-5244"
         // Create tel: link to open phone dialer
         window.location.href = `tel:${phoneNumber}`
     }

@@ -10,7 +10,7 @@ export const Footer = () => {
 
                 <ul className="p-4 font-rubik bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg flex flex-col gap-y-2">
 
-                    <li className="w-2/3 mb-2 break-words">5102 West Laurel St. Suite 500 Tampa, FL 33607</li>
+                    <li className="w-2/3 mb-2 break-words">Clayton, Delaware 19938, United States</li>
                     <div className="inline-flex gap-3">
                         <Facebook />
                         <Instagram />
@@ -69,21 +69,21 @@ export const Footer = () => {
                         <PhoneIcon className=" " />
                         <div>
                             <p className="font-rubik text-sm">Phone Number</p>
-                            <p className="font-rubik text-xs">813-449-4800</p>
+                            <p className="font-rubik text-xs">302-500-5244</p>
                         </div>
                     </span>
                     <span className="p-3 flex gap-4 items-center bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg">
                         <Mail className=" " />
                         <div>
                             <p className="font-rubik text-sm">Email Address</p>
-                            <p className="font-rubik text-xs">demo@gmail.com</p>
+                            <p className="font-rubik text-xs">crazytech302@gmail.com</p>
                         </div>
                     </span>
                     <span className="p-3 flex gap-4 items-center bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg">
                         <MapPin className=" " />
                         <div>
                             <p className="font-rubik text-sm">Office Location</p>
-                            <p className="font-rubik text-xs">Meltons, Lucas City</p>
+                            <p className="font-rubik text-xs">Clayton, Delaware 19938, United States</p>
                         </div>
                     </span>
 
