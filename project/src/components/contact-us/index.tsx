@@ -27,6 +27,9 @@ export const ContactUsHero = () => {
         setIsSubmitting(true)
         setSubmitStatus('idle')
 
+        // Debug: Log the form data to see what's being sent
+        console.log('Form data being submitted:', data)
+
         // Get EmailJS credentials from environment variables
         const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
         const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
@@ -41,9 +44,18 @@ export const ContactUsHero = () => {
         }
 
         try {
-            // EmailJS template parameters - matching your actual template variables
+            // EmailJS template parameters - ensuring all fields are included
             const templateParams = {
-                name: `${data.firstname} ${data.lastname}`,
+                name: `${data.firstname || ''} ${data.lastname || ''}`.trim(),
+                firstname: data.firstname || 'Not provided',
+                lastname: data.lastname || 'Not provided',
+                email: data.email || 'Not provided',
+                phone: data.phonenumber || 'Not provided',
+                phonenumber: data.phonenumber || 'Not provided', // Keep both for compatibility
+                category: data.jobcategory || 'Not selected',
+                jobcategory: data.jobcategory || 'Not selected', // Keep both for compatibility
+                comment: data.comment || 'No message provided',
+                message: data.comment || 'No message provided', // Keep both for compatibility
                 time: new Date().toLocaleString('en-US', {
                     weekday: 'long',
                     year: 'numeric',
@@ -53,15 +65,21 @@ export const ContactUsHero = () => {
                     minute: '2-digit',
                     timeZoneName: 'short'
                 }),
-                message: `
-Email: ${data.email}
-Phone: ${data.phonenumber}
-Category: ${data.jobcategory}
+                // Alternative: Create a formatted message with all details
+                full_message: `
+Contact Details:
+- Name: ${data.firstname || 'Not provided'} ${data.lastname || 'Not provided'}
+- Email: ${data.email || 'Not provided'}
+- Phone: ${data.phonenumber || 'Not provided'}
+- Category: ${data.jobcategory || 'Not selected'}
 
 Message:
 ${data.comment || 'No message provided'}
                 `.trim()
             }
+
+            // Debug: Log template params
+            console.log('Template params being sent:', templateParams)
 
             // Send email using EmailJS with env variables
             const response = await emailjs.send(
@@ -129,9 +147,14 @@ ${data.comment || 'No message provided'}
                                 <FormField
                                     control={form.control}
                                     name="jobcategory"
+                                    rules={{ required: "Please select a category" }} // Added validation
                                     render={({ field }) => (
                                         <FormItem>
-                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                            <Select 
+                                                onValueChange={field.onChange} 
+                                                defaultValue={field.value}
+                                                value={field.value} // Ensure controlled component
+                                            >
                                                 <FormControl>
                                                     <SelectTrigger className="w-full">
                                                         <SelectValue placeholder="I am a ..." />
@@ -147,14 +170,19 @@ ${data.comment || 'No message provided'}
                                     )}
                                 />
 
-                                <div className="grid grid-cols-2 gap-x-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4"> {/* Better mobile responsiveness */}
                                     <FormField
                                         control={form.control}
                                         name="firstname"
+                                        rules={{ required: "First name is required" }}
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormControl>
-                                                    <Input required placeholder="First Name" {...field} />
+                                                    <Input 
+                                                        placeholder="First Name" 
+                                                        {...field}
+                                                        value={field.value} // Ensure controlled
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -164,10 +192,15 @@ ${data.comment || 'No message provided'}
                                     <FormField
                                         control={form.control}
                                         name="lastname"
+                                        rules={{ required: "Last name is required" }}
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormControl>
-                                                    <Input required placeholder="Last Name" {...field} />
+                                                    <Input 
+                                                        placeholder="Last Name" 
+                                                        {...field}
+                                                        value={field.value} // Ensure controlled
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -178,10 +211,22 @@ ${data.comment || 'No message provided'}
                                 <FormField
                                     control={form.control}
                                     name="email"
+                                    rules={{ 
+                                        required: "Email is required",
+                                        pattern: {
+                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                            message: "Invalid email address"
+                                        }
+                                    }}
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
-                                                <Input type="email" required placeholder="Email" {...field} />
+                                                <Input 
+                                                    type="email" 
+                                                    placeholder="Email" 
+                                                    {...field}
+                                                    value={field.value} // Ensure controlled
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -191,10 +236,15 @@ ${data.comment || 'No message provided'}
                                 <FormField
                                     control={form.control}
                                     name="phonenumber"
+                                    rules={{ required: "Phone number is required" }}
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
-                                                <Input required placeholder="Phone Number" {...field} />
+                                                <Input 
+                                                    placeholder="Phone Number" 
+                                                    {...field}
+                                                    value={field.value} // Ensure controlled
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -209,9 +259,10 @@ ${data.comment || 'No message provided'}
                                             <FormControl>
                                                 <textarea 
                                                     className="border p-4 rounded-xl w-full min-h-[100px] resize-vertical" 
-                                                    {...field} 
+                                                    {...field}
+                                                    value={field.value} // Ensure controlled
                                                     placeholder="Comment or Message"
-                                                ></textarea>
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
